@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>כל השירותים הפיננסיים במקום אחד — יחזקאל אביחיל שירותי חשבונאות</title>
+    <meta name="description" content="מהגשת דוחות שנתיים ועד מחזור משכנתא — גלו את מגוון השירותים המקצועיים שלנו לעסקים קטנים ובינוניים ולרוכשי נדל&quot;ן. הפתרון הפיננסי שחיפשתם כבר כאן!">
+    <meta name="keywords" content="הגשת דוחות שנתיים, מחזור משכנתא, הנהלת חשבונות לעסקים קטנים, ייעוץ משכנתא חדשה, ניהול ספרים לעסקים">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: 'd51d7fb8-2bb8-47ab-9aca-8ac06cafd625',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <meta property="og:title" content="כל השירותים הפיננסיים במקום אחד — יחזקאל אביחיל שירותי חשבונאות">
+    <meta property="og:description" content="מהגשת דוחות שנתיים ועד מחזור משכנתא — גלו את מגוון השירותים המקצועיים שלנו לעסקים קטנים ובינוניים ולרוכשי נדל&quot;ן. הפתרון הפיננסי שחיפשתם כבר כאן!">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="כל השירותים הפיננסיים במקום אחד — יחזקאל אביחיל שירותי חשבונאות">
+    <meta name="twitter:description" content="מהגשת דוחות שנתיים ועד מחזור משכנתא — גלו את מגוון השירותים המקצועיים שלנו לעסקים קטנים ובינוניים ולרוכשי נדל&quot;ן. הפתרון הפיננסי שחיפשתם כבר כאן!">
+    <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: var(--text-dark, #333) !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+      [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 10px !important; padding-right: 28px !important; }
+      .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus (exclude catalog sub-menus that use <a> children instead of <li>) */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))):not(:has(> a)), .sub-menu:not(:has(li)):not(:has(> a)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .navbar .sub-menu.mobile-expanded, .nav-menu .sub-menu.mobile-expanded, #navMenu .sub-menu.mobile-expanded { max-height: none !important; overflow-y: visible !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; position: relative !important; min-height: 44px !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; min-width: 0 !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; min-width: 0 !important; padding: 0 !important; line-height: inherit !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu, .navbar li:has(.sub-menu) > .sub-menu, #navMenu li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: auto !important; background: transparent !important; border: none !important; cursor: pointer !important; color: var(--text-light) !important; position: static !important; flex-shrink: 0 !important; align-self: stretch !important; z-index: 2 !important; padding: 0 !important; margin: 0 !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; color: var(--text-light) !important; white-space: normal !important; }
+        .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+        [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 0 !important; padding-right: 28px !important; }
+        .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+        .nav-menu.active, #navMenu.active { max-width: 100vw !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+        .navbar .sub-menu li a, nav.navbar .sub-menu li a, .zappy-products-dropdown .sub-menu a { color: var(--text-light) !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+
+    <style id="mobile-lang-menu-deployed-css">
+    @media (max-width: 768px) {
+      .lang-switcher,
+      .nav-cta-container .lang-switcher,
+      .nav-container .lang-switcher,
+      .navbar .lang-switcher,
+      .navbar .nav-cta-container .lang-switcher,
+      .nav-icons-left .lang-switcher,
+      .nav-ecommerce-icons .lang-switcher { display: none !important; }
+      .mobile-lang-menu { width: 100%; border-top: 1px solid rgba(128,128,128,0.2); padding: 8px 0 0 0; margin-top: 8px; }
+      .mobile-lang-toggle { display: flex !important; align-items: center; justify-content: space-between; width: 100%; padding: 12px 16px; background: none; border: none; cursor: pointer; font-size: 15px; color: inherit; font-family: inherit; }
+      .mobile-lang-toggle::after { content: ''; display: inline-block; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform 0.3s ease; margin-left: 8px; }
+      .mobile-lang-toggle.expanded::after { transform: rotate(-135deg); }
+      .mobile-lang-options { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+      .mobile-lang-options.expanded { max-height: 300px; }
+      .mobile-lang-option { display: flex !important; align-items: center; gap: 10px; padding: 10px 24px; text-decoration: none; color: inherit; font-size: 14px; font-family: inherit; }
+      .mobile-lang-option:hover { background: rgba(128,128,128,0.1); }
+      .mobile-lang-option.active { font-weight: 600; opacity: 0.7; pointer-events: none; }
+      .mobile-lang-option img { width: 20px; height: 20px; border-radius: 50%; }
+    }
+    @media (min-width: 769px) {
+      .mobile-lang-menu { display: none !important; }
+    }
+    </style>
+
+    <style id="zappy-widget-visibility">
+      #mic-access-tool-general-button, .mic-access-tool-general-button,
+      #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+      ._access-icon, #mic-access-tool-box, .mic-access-tool-box,
+      #mic-init-access-tool #mic-access-tool-box, div[id*="mic-access-tool-box"], ._access-menu {
+        display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important;
+      }
+    </style>
+</head>
+<body>
+
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+
+  <button class="phone-header-btn" data-phone="[business_phone]" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+
+  <div class="nav-container">
+    <div class="nav-right-group"><div class="nav-brand">
+      <a href="/" class="logo-link">
+        <img src="/assets/logo.webp" alt="יחזקאל אביחיל שירותי חשבונאות" class="logo">
+      </a>
+    </div><ul class="nav-menu" id="navMenu"><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li></ul></div>
+
+    
+
+    <div class="nav-cta-container">
+      <a href="/contact" class="nav-cta-btn">צור קשר</a>
+    </div>
+  </div>
+</nav>
+<script>
+
+// Navbar Mobile Menu Toggle and Contrast Fix
+(function() {
+  // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts
+  window.addEventListener('load', function() {
+    
+    // FIX MOBILE BUTTON CONTRAST
+    // Detect navbar background color and apply contrasting color to mobile buttons
+    const navbar = document.querySelector('.navbar, nav, header');
+    if (!navbar) {
+      console.log('[Navbar] Navbar element not found');
+      return;
+    }
+    
+    // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors
+    // These are used in multiple places below
+    let mobileToggle = document.getElementById('mobileToggle') ||
+                       document.querySelector('.mobile-toggle') ||
+                       document.querySelector('.hamburger') ||
+                       document.querySelector('.hamburger-menu') ||
+                       document.querySelector('.menu-toggle') ||
+                       document.querySelector('.burger-menu') ||
+                       document.querySelector('[aria-label="Menu"]') ||
+                       document.querySelector('[aria-label="תפריט"]');
+    
+    const phoneBtn = document.querySelector('.phone-header-btn');
+    
+    const computedStyle = window.getComputedStyle(navbar);
+    let bgColor = computedStyle.backgroundColor;
+    
+    console.log('[Navbar] Initial navbar background:', bgColor);
+    
+    // Check if background is transparent or rgba with 0 alpha
+    const isTransparent = bgColor === 'transparent' || 
+                         bgColor === 'rgba(0, 0, 0, 0)' ||
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
+    
+    if (isTransparent) {
+      // Check for background-image or gradient
+      const bgImage = computedStyle.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        console.log('[Navbar] Navbar has background image/gradient, using dark text');
+        bgColor = 'rgb(240, 240, 240)'; // Assume light background
+      } else {
+        // Transparent navbar - check body background
+        const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+        console.log('[Navbar] Navbar transparent, using body background:', bodyBg);
+        bgColor = bodyBg;
+      }
+    }
+    
+    // Calculate luminance to determine if background is light or dark
+    const rgb = bgColor.match(/\d+/g);
+    if (rgb && rgb.length >= 3) {
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      
+      // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a)
+      // No dynamic color overrides needed - colors come from the generated navbar CSS
+      console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')');
+      
+      // FIX ICON SIZES - Ensure SVGs are properly sized and visible
+      // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES
+      const criticalCSS = document.createElement('style');
+      criticalCSS.id = 'zappy-mobile-nav-fix';
+      const htmlLang = document.documentElement.lang || 'en';
+      const htmlDir = document.documentElement.dir || 'ltr';
+      // Check both dir attribute AND lang for RTL detection
+      // dir="rtl" is the most reliable indicator
+      const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar';
+      
+      criticalCSS.textContent = `
+        /* Hide mobile buttons on desktop, show only on mobile */
+        @media (min-width: 769px) {
+          .mobile-toggle,
+          .phone-header-btn {
+            display: none !important;
+          }
+        }
+        
+        /* Show and position mobile buttons correctly on mobile */
+        @media (max-width: 768px) {
+          .mobile-toggle,
+          .phone-header-btn {
+            position: absolute !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            z-index: 1001 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 50% !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 6px !important;
+            background: none !important;
+            color: var(--nav-text, var(--text-light)) !important;
+          }
+          
+          /* LTR positioning (default): hamburger LEFT, phone RIGHT */
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+          html[dir="ltr"] .mobile-toggle {
+            left: 12px !important;
+            right: auto !important;
+          }
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+          html[dir="ltr"] .phone-header-btn {
+            right: 12px !important;
+            left: auto !important;
+          }
+          
+          /* RTL positioning: hamburger RIGHT, phone LEFT */
+          html[dir="rtl"] .mobile-toggle,
+          html[lang="he"] .mobile-toggle,
+          html[lang="ar"] .mobile-toggle {
+            right: 12px !important;
+            left: auto !important;
+          }
+          html[dir="rtl"] .phone-header-btn,
+          html[lang="he"] .phone-header-btn,
+          html[lang="ar"] .phone-header-btn {
+            left: 12px !important;
+            right: auto !important;
+          }
+          
+          /* CRITICAL: Ensure nav-container has min-height on mobile */
+          /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */
+          .nav-container {
+            min-height: 70px !important;
+            position: relative !important;
+          }
+          
+          /* Ensure SVG icons are properly sized and inherit color */
+          .mobile-toggle svg,
+          .phone-header-btn svg {
+            width: 24px !important;
+            height: 24px !important;
+            /* Don't force display - let JavaScript control hamburger/close toggle */
+          }
+          
+          /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */
+          /* that creates a visible ghost box when CTA button is hidden */
+          .nav-cta-container {
+            box-shadow: none !important;
+            padding: 0 !important;
+          }
+          
+          /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */
+          /* (only the CTA button is inside, and it's hidden on mobile) */
+          .nav-cta-container:not(:has(.lang-switcher)) {
+            display: none !important;
+          }
+          
+          /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */
+          /* The .image-fade-gradient has bottom: -30px (extends below parent) */
+          /* On mobile stacked layout, this overlaps the h1 text below the image */
+          .hero-image-column {
+            overflow: hidden !important;
+          }
+          .image-fade-gradient {
+            bottom: 0 !important;
+          }
+          
+          /* Hide desktop language switcher on mobile - hamburger menu handles it */
+          /* High specificity to override stored CSS */
+          .lang-switcher,
+          .nav-cta-container .lang-switcher,
+          .nav-container .lang-switcher,
+          .navbar .lang-switcher,
+          .navbar .nav-cta-container .lang-switcher {
+            display: none !important;
+          }
+        }
+      `;
+      
+      // Remove existing fix if present and inject new one
+      const existing = document.getElementById('zappy-mobile-nav-fix');
+      if (existing) existing.remove();
+      document.head.appendChild(criticalCSS);
+      
+      console.log('[Navbar] Critical CSS injected for mobile nav positioning');
+      
+      // ONLY apply inline positioning styles on mobile viewport
+      // On desktop, the CSS handles hiding these buttons with display: none
+      // Inline styles were breaking desktop layout by overriding CSS
+      const isMobileViewport = window.innerWidth <= 768;
+      
+      if (mobileToggle) {
+        // Icon sizing applies to all viewports for consistency
+        const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon');
+        const closeIcon = mobileToggle.querySelector('.close-icon');
+        
+        if (hamburgerIcon) {
+          hamburgerIcon.style.setProperty('width', '24px', 'important');
+          hamburgerIcon.style.setProperty('height', '24px', 'important');
+          hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default
+        }
+        if (closeIcon) {
+          closeIcon.style.setProperty('width', '24px', 'important');
+          closeIcon.style.setProperty('height', '24px', 'important');
+          closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          mobileToggle.style.setProperty('position', 'absolute', 'important');
+          mobileToggle.style.setProperty('top', '50%', 'important');
+          mobileToggle.style.setProperty('transform', 'translateY(-50%)', 'important');
+          mobileToggle.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          
+          console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          mobileToggle.style.removeProperty('position');
+          mobileToggle.style.removeProperty('top');
+          mobileToggle.style.removeProperty('transform');
+          mobileToggle.style.removeProperty('z-index');
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning');
+        }
+      }
+      
+      if (phoneBtn) {
+        // Icon sizing applies to all viewports
+        const phoneIcon = phoneBtn.querySelector('svg');
+        if (phoneIcon) {
+          phoneIcon.style.width = '24px';
+          phoneIcon.style.height = '24px';
+          phoneIcon.setAttribute('width', '24');
+          phoneIcon.setAttribute('height', '24');
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          phoneBtn.style.setProperty('position', 'absolute', 'important');
+          phoneBtn.style.setProperty('top', '50%', 'important');
+          phoneBtn.style.setProperty('transform', 'translateY(-50%)', 'important');
+          phoneBtn.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          
+          console.log('[Navbar] Phone button positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          phoneBtn.style.removeProperty('position');
+          phoneBtn.style.removeProperty('top');
+          phoneBtn.style.removeProperty('transform');
+          phoneBtn.style.removeProperty('z-index');
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared phone button inline positioning');
+        }
+      }
+    } else {
+      console.log('[Navbar] Could not parse background color:', bgColor);
+    }
+    
+    // MOBILE MENU TOGGLE
+    // Re-query in case DOM changed (mobileToggle already declared at top of function)
+    mobileToggle = document.getElementById('mobileToggle') ||
+                   document.querySelector('.mobile-toggle') ||
+                   document.querySelector('.hamburger') ||
+                   document.querySelector('.hamburger-menu') ||
+                   document.querySelector('.menu-toggle') ||
+                   document.querySelector('.burger-menu') ||
+                   document.querySelector('[aria-label="Menu"]') ||
+                   document.querySelector('[aria-label="תפריט"]');
+    
+    // EXPANDED SEARCH: Find nav menu by ID or class
+    const navMenu = document.getElementById('navMenu') ||
+                  document.querySelector('.nav-menu') ||
+                  document.querySelector('.nav-links') ||
+                  document.querySelector('nav ul:not(.submenu)');
+    
+    if (!mobileToggle || !navMenu) {
+      console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu });
+      return;
+    }
+    
+    // Ensure navMenu has ID for CSS targeting
+    if (!navMenu.id) {
+      navMenu.id = 'navMenu';
+    }
+    
+    console.log('[Navbar] Initializing mobile menu...');
+    
+    // Remove any existing event listeners by cloning the button
+    const newToggle = mobileToggle.cloneNode(true);
+    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+    
+    // Toggle menu on button click - use newToggle now
+    newToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const hamburgerIcon = this.querySelector('.hamburger-icon');
+      const closeIcon = this.querySelector('.close-icon');
+      const isActive = navMenu.classList.contains('active');
+      
+      if (isActive) {
+        // Close menu
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        console.log('[Navbar] Menu closed');
+      } else {
+        // Open menu
+        navMenu.classList.add('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important');
+        document.body.style.overflow = 'hidden';
+        console.log('[Navbar] Menu opened');
+      }
+    });
+    
+    // Close menu when clicking nav links (but NOT dropdown toggles)
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        // Don't close if it's a dropdown child (unless it's a real navigation link)
+        if (this.getAttribute('href') === '#') return;
+        
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        console.log('[Navbar] Menu closed (link clicked)');
+      });
+    });
+    
+    // DROPDOWN MENU TOGGLE (for mobile and touch devices)
+    var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = this.closest('.nav-dropdown');
+        if (!parent) return;
+        
+        // Close other open dropdowns at the same level
+        var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open');
+        siblings.forEach(function(sib) {
+          if (sib !== parent) sib.classList.remove('open');
+        });
+        
+        parent.classList.toggle('open');
+        console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed');
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
+        openDropdowns.forEach(function(dd) { dd.classList.remove('open'); });
+      }
+    });
+    
+    console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns');
+    
+    // Phone button functionality (phoneBtn already declared at top of function)
+    if (phoneBtn) {
+      phoneBtn.addEventListener('click', function() {
+        // Get phone number from placeholder in page or use default
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        const phoneNumber = phoneLinks.length > 0 
+          ? phoneLinks[0].getAttribute('href').replace('tel:', '')
+          : '[business_phone]';
+        
+        window.location.href = 'tel:' + phoneNumber;
+        console.log('[Navbar] Phone button clicked');
+      });
+    }
+    
+    console.log('[Navbar] Mobile menu initialized successfully');
+    
+    // === WHATSAPP BUTTON VISIBILITY FIX ===
+    // Ensure WhatsApp floating button is hidden on desktop and visible on mobile
+    // IMPORTANT: Only target the floating button by its class, NOT generic wa.me links
+    const handleWhatsAppVisibility = function() {
+      const whatsappBtn = document.querySelector('.whatsapp-float');
+      if (whatsappBtn) {
+        const isDesktop = window.innerWidth >= 769;
+        if (isDesktop) {
+          whatsappBtn.style.setProperty('display', 'none', 'important');
+          whatsappBtn.style.setProperty('visibility', 'hidden', 'important');
+          whatsappBtn.style.setProperty('opacity', '0', 'important');
+          whatsappBtn.style.setProperty('pointer-events', 'none', 'important');
+          console.log('[WhatsApp] Button hidden on desktop');
+        } else {
+          whatsappBtn.style.removeProperty('display');
+          whatsappBtn.style.removeProperty('visibility');
+          whatsappBtn.style.removeProperty('opacity');
+          whatsappBtn.style.removeProperty('pointer-events');
+          console.log('[WhatsApp] Button visible on mobile');
+        }
+      }
+    };
+    
+    // Run on load
+    handleWhatsAppVisibility();
+    
+    // Run on resize with debouncing
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(handleWhatsAppVisibility, 100);
+    });
+  });
+})();
+
+</script>
+  
+  <main>
+    <section class="services-intro-section" data-layout-spec="שירותים-intro" dir="rtl">
+  <!-- Blueprint grid texture overlay -->
+  <div class="services-intro-texture" aria-hidden="true"></div>
+
+  <div class="services-intro-container">
+    <!-- Content Column (START = RIGHT in RTL) -->
+    <div class="services-intro-content">
+      <!-- Eyebrow label -->
+      <div class="services-intro-eyebrow">
+        <span class="services-intro-eyebrow-line" aria-hidden="true"></span>
+        <span class="services-intro-eyebrow-text">שירותים מקצועיים</span>
+      </div>
+
+      <h1 class="services-intro-h1">הנהלת חשבונות לעסקים<br>וייעוץ משכנתאות<br><em>תחת קורת גג אחת</em></h1>
+
+      <p class="services-intro-body">יחזקאל אביחיל שירותי חשבונאות מציע מענה מקיף לשני עולמות פיננסיים מרכזיים: הנהלת חשבונות לעסקים קטנים ובינוניים — כולל הגשת דוחות שנתיים, ניהול ספרים שוטף ועמידה בדרישות הרגולציה — לצד ייעוץ משכנתאות מקצועי לרוכשי נדל"ן ובעלי בתים המעוניינים במשכנתא חדשה או מחזור משכנתא בתנאים אופטימליים.</p>
+
+      <h3 class="services-intro-h3">ליווי מדויק, ממוקד ואמין — בכל שלב פיננסי בחייכם.</h3>
+
+      <!-- Accent rule -->
+      <div class="services-intro-accent-rule" aria-hidden="true"></div>
+
+      <!-- Stat chips -->
+      <div class="services-intro-chips">
+        <div class="services-intro-chip">
+          <span class="chip-number">+15</span>
+          <span class="chip-label">שנות ניסיון</span>
+        </div>
+        <div class="services-intro-chip">
+          <span class="chip-number">עסקים</span>
+          <span class="chip-label">הנהלת חשבונות</span>
+        </div>
+        <div class="services-intro-chip">
+          <span class="chip-number">משכנתאות</span>
+          <span class="chip-label">ייעוץ מקצועי</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Column (END = LEFT in RTL) -->
+    <figure class="services-intro-figure">
+      <!-- Decorative frame lines -->
+      <div class="services-intro-frame-tl" aria-hidden="true"></div>
+      <div class="services-intro-frame-br" aria-hidden="true"></div>
+
+      <img data-placeholder="services-intro-image-1" data-context="A professional Israeli accountant and financial advisor at a modern office desk, reviewing financial documents and mortgage paperwork. Clean editorial style with warm desk lighting, navy and white tones. Documents include spreadsheets, annual reports, and mortgage contracts. Atmosphere conveys trust, precision, and expertise in both business accounting and real estate financing." width="600" height="720" src="/assets/site-services-intro-image-1.webp" alt="יחזקאל אביחיל — שירותי הנהלת חשבונות וייעוץ משכנתאות" class="services-intro-img">
+
+      <!-- Floating badge -->
+      <div class="services-intro-badge">
+        <i class="fa-solid fa-shield-halved services-intro-badge-icon" aria-hidden="true"></i>
+        <div class="services-intro-badge-text">
+          <strong>שירות אישי</strong>
+          <span>מותאם לכל לקוח</span>
+        </div>
+      </div>
+    </figure>
+  </div>
+
+  <!-- Bottom diagonal divider -->
+  <div class="services-intro-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,52 L1440,20 L1440,72 Z" fill="#EEF3F8"></path>
+      <line x1="0" y1="52" x2="1440" y2="20" stroke="rgba(44,95,176,0.18)" stroke-width="1"></line>
+    </svg>
+  </div>
+</section>
+
+<section class="services-accounting-services-section" data-layout-spec="שירותים-accounting-services" dir="rtl">
+  <!-- Blueprint grid texture overlay -->
+  <div class="sas-texture-overlay" aria-hidden="true"></div>
+
+  <div class="sas-container">
+
+    <!-- Right: Section Header + Image -->
+    <aside class="sas-sidebar">
+      <div class="sas-label-tag">שירותי חשבונאות</div>
+      <h2 class="sas-heading">הנהלת חשבונות לעסקים — מקצועית, מסודרת, אמינה</h2>
+      <p class="sas-intro">אנו מספקים שירותי הנהלת חשבונות לעסקים קטנים ובינוניים, עם דגש על סדר, דיוק ועמידה בכל דרישות הרגולציה. מניהול שוטף של הספרים ועד הגשת דוחות שנתיים — אנחנו כאן לאורך כל הדרך.</p>
+      <figure class="sas-image-figure">
+        <img data-placeholder="services-accounting-services-image-1" data-context="Professional Israeli accountant at a modern desk reviewing financial ledgers and annual reports, with organized folders, a laptop showing spreadsheets, and financial documents. Clean office environment with a premium, authoritative atmosphere conveying trust and precision in business accounting and bookkeeping." width="600" height="400" src="/assets/site-services-accounting-services-image-1.webp" alt="שירותי הנהלת חשבונות מקצועיים לעסקים">
+      </figure>
+    </aside>
+
+    <!-- Left: 2x2 Service Cards Grid -->
+    <div class="sas-cards-grid">
+
+      <!-- Card 1: Bookkeeping (featured/larger) -->
+      <article class="sas-card sas-card--featured">
+        <div class="sas-card-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            <line x1="8" y1="7" x2="16" y2="7"></line>
+            <line x1="8" y1="11" x2="16" y2="11"></line>
+            <line x1="8" y1="15" x2="12" y2="15"></line>
+          </svg>
+        </div>
+        <div class="sas-card-body">
+          <h3 class="sas-card-title">הנהלת חשבונות שוטפת</h3>
+          <p class="sas-card-text">ניהול שוטף ומסודר של ספרי החשבונות שלכם — רישום תנועות, ניהול חשבוניות, התאמות בנקאיות ועדכון מאזן שוטף. אנו מהווים שותף פיננסי אמיתי לעסק שלכם, כדי שתוכלו להתמקד בצמיחה ולא בניירת.</p>
+          <div class="sas-card-accent-line" aria-hidden="true"></div>
+        </div>
+      </article>
+
+      <!-- Card 2: Annual Report Filing -->
+      <article class="sas-card">
+        <div class="sas-card-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <div class="sas-card-body">
+          <h3 class="sas-card-title">הגשת דוחות שנתיים</h3>
+          <p class="sas-card-text">הכנה והגשה של דוחות שנתיים לרשויות המס בצורה מדויקת ובזמן. אנו מטפלים בכל ההיבטים הטכניים והרגולטוריים כדי שהעסק שלכם יהיה תמיד בסדר מול רשות המסים.</p>
+        </div>
+      </article>
+
+      <!-- Card 3: Financial Order & Compliance -->
+      <article class="sas-card">
+        <div class="sas-card-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+        </div>
+        <div class="sas-card-body">
+          <h3 class="sas-card-title">סדר פיננסי ועמידה בדרישות</h3>
+          <p class="sas-card-text">ליווי שוטף לעמידה בכל חובות הדיווח, תשלומי מקדמות, ניכויים וניהול תיק מסודר מול רשויות המס. אנו מוודאים שהעסק שלכם פועל בהתאם לחוק — ללא הפתעות.</p>
+        </div>
+      </article>
+
+      <!-- Card 4: Document Flow -->
+      <article class="sas-card">
+        <div class="sas-card-icon-wrap">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <div class="sas-card-body">
+          <h3 class="sas-card-title">ניהול מסמכים וזרימת מידע</h3>
+          <p class="sas-card-text">ארגון ומיון כל המסמכים הפיננסיים של העסק — חשבוניות, קבלות, אסמכתאות ותיעוד. מערכת עבודה מסודרת שמאפשרת לכם גישה מהירה לכל מידע בכל עת.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Bottom divider: blueprint-grid clipped edge transitioning to next section -->
+  <div class="sas-divider-wrapper" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,36 L60,28 L120,36 L180,24 L240,34 L300,20 L360,32 L420,18 L480,30 L540,16 L600,28 L660,14 L720,26 L780,18 L840,30 L900,16 L960,28 L1020,20 L1080,32 L1140,22 L1200,34 L1200,72 Z" fill="#152033"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="services-mortgage-services-section" data-layout-spec="שירותים-mortgage-services" dir="rtl">
+  <!-- Blueprint grid overlay -->
+  <div class="smms-blueprint-overlay" aria-hidden="true"></div>
+
+  <!-- Directional line accents -->
+  <div class="smms-line-accents" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" class="smms-lines-svg" viewBox="0 0 1200 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="180" x2="1200" y2="120" stroke="rgba(245,158,11,0.18)" stroke-width="1"></line>
+      <line x1="0" y1="320" x2="1200" y2="280" stroke="rgba(15,118,110,0.15)" stroke-width="1"></line>
+      <line x1="0" y1="460" x2="1200" y2="420" stroke="rgba(46,91,255,0.12)" stroke-width="1"></line>
+      <circle cx="600" cy="300" r="180" stroke="rgba(245,158,11,0.06)" stroke-width="1" fill="none"></circle>
+      <circle cx="600" cy="300" r="280" stroke="rgba(15,118,110,0.05)" stroke-width="1" fill="none"></circle>
+    </svg>
+  </div>
+
+  <div class="smms-container">
+    <div class="smms-grid">
+
+      <!-- Image Block (START / RIGHT in RTL) -->
+      <figure class="smms-image-block">
+        <div class="smms-image-wrapper">
+          <img data-placeholder="services-mortgage-services-image-1" data-context="Professional mortgage consultant in a modern Israeli financial office, reviewing mortgage documents and property blueprints on a large desk. The scene has a cinematic deep-blue and teal color grade, with architectural drawings, a house model, and financial charts visible. Dramatic lighting highlights the consultant in a trust-inspiring, premium financial advisory setting." width="600" height="720" src="/assets/site-services-mortgage-services-image-1.webp" alt="יועץ משכנתאות מקצועי בסביבת עבודה פיננסית מודרנית">
+          <div class="smms-image-accent-bar"></div>
+        </div>
+        <div class="smms-image-badge">
+          <span class="smms-badge-icon"><i class="fa fa-home"></i></span>
+          <span class="smms-badge-text">ייעוץ משכנתאות מקצועי</span>
+        </div>
+      </figure>
+
+      <!-- Content Block (END / Left in RTL) -->
+      <div class="smms-content">
+        <div class="smms-eyebrow">
+          <span class="smms-eyebrow-line"></span>
+          <span class="smms-eyebrow-text">שירותי משכנתאות</span>
+        </div>
+
+        <h2 class="smms-heading">ייעוץ משכנתאות –<br>מהחלום לבית</h2>
+
+        <p class="smms-intro">אנו מלווים אתכם בכל שלב בתהליך המשכנתא – בין אם אתם רוכשים דירה ראשונה ומתמודדים עם בחירת המסלול הנכון, ובין אם אתם שוקלים מחזור משכנתא קיים לתנאים טובים יותר. עם ניסיון רב בתחום המימון הנדל"ני, אנו מספקים ניתוח מדויק, ליווי אישי ומשא ומתן מול הבנקים – כדי שתקבלו את העסקה הטובה ביותר עבורכם.</p>
+
+        <div class="smms-services-list">
+
+          <article class="smms-service-item">
+            <div class="smms-service-icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <div class="smms-service-content">
+              <h3 class="smms-service-title">משכנתא חדשה</h3>
+              <p class="smms-service-desc">ניתוח צרכים מלא, בניית תמהיל מסלולים מותאם אישית, והגשת בקשה לבנקים המתאימים ביותר – כל זאת תוך שקיפות מלאה לאורך כל הדרך.</p>
+            </div>
+          </article>
+
+          <div class="smms-divider-rule" aria-hidden="true"></div>
+
+          <article class="smms-service-item">
+            <div class="smms-service-icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="17 1 21 5 17 9"></polyline>
+                <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                <polyline points="7 23 3 19 7 15"></polyline>
+                <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+              </svg>
+            </div>
+            <div class="smms-service-content">
+              <h3 class="smms-service-title">מחזור משכנתא</h3>
+              <p class="smms-service-desc">בחינה מעמיקה של תנאי המשכנתא הקיימת, הערכת כדאיות המחזור, וניהול משא ומתן מול הבנק להשגת ריבית נמוכה יותר ותנאים משופרים.</p>
+            </div>
+          </article>
+
+          <div class="smms-divider-rule" aria-hidden="true"></div>
+
+          <article class="smms-service-item">
+            <div class="smms-service-icon-wrap">
+              <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <div class="smms-service-content">
+              <h3 class="smms-service-title">הכנה פיננסית לקראת הבנק</h3>
+              <p class="smms-service-desc">הכנת תיק פיננסי מסודר, ניתוח יכולת ההחזר, וייעוץ מקדים לשיפור הפרופיל הפיננסי שלכם – כדי שתגיעו לשיחה עם הבנק מוכנים ובטוחים.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="smms-cta-row">
+          <a href="/contact" class="smms-btn-primary">לייעוץ ראשוני ללא עלות</a>
+          <a href="/contact" class="smms-btn-ghost">צרו קשר</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom torn-paper divider -->
+  <div class="smms-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,38 Q30,30 60,38 T120,32 Q160,36 200,28 T280,34 Q320,30 360,38 T440,30 Q480,36 520,28 T600,34 Q640,30 680,38 T760,30 Q800,36 840,28 T920,34 Q960,30 1000,38 T1080,30 Q1120,36 1160,28 L1200,34 L1200,72 Z" fill="#F6F9FC"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="services-deliverables-section" data-layout-spec="שירותים-deliverables" dir="rtl">
+  <!-- Blueprint grid texture overlay -->
+  <div class="sds-texture" aria-hidden="true"></div>
+
+  <div class="sds-container">
+
+    <!-- Header -->
+    <header class="sds-header">
+      <div class="sds-label-row">
+        <span class="sds-eyebrow">מה תקבלו בפועל</span>
+        <span class="sds-rule-line" aria-hidden="true"></span>
+      </div>
+      <h2 class="sds-heading">מה כלול בשירות — מהשיחה הראשונה ועד לסגירה</h2>
+      <p class="sds-intro">בין אם אתם עסק שזקוק להנהלת חשבונות מסודרת והגשת דוחות שנתיים, ובין אם אתם רוכשי נדל"ן שמחפשים ייעוץ משכנתאות מקצועי — אנחנו מלווים אתכם בכל שלב עם תמונה פיננסית ברורה ומוסמכת.</p>
+    </header>
+
+    <!-- Divider rule -->
+    <div class="sds-section-divider" aria-hidden="true"></div>
+
+    <!-- Two-column deliverables grid -->
+    <div class="sds-columns">
+
+      <!-- Column 1: Accounting & Reporting -->
+      <div class="sds-column">
+        <div class="sds-column-header">
+          <span class="sds-col-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+              <rect x="2" y="2" width="18" height="18" rx="1" stroke="currentColor" stroke-width="1.5"></rect>
+              <path d="M6 7h10M6 11h10M6 15h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+          </span>
+          <h3 class="sds-col-title">הנהלת חשבונות ודיווח</h3>
+        </div>
+        <div class="sds-col-divider" aria-hidden="true"></div>
+
+        <ul class="sds-checklist">
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">ניהול ספרים שוטף</strong>
+              <span class="sds-item-desc">רישום ומעקב אחר כל פעולות העסק — הכנסות, הוצאות ותנועות בנקאיות — בצורה מסודרת ומדויקת.</span>
+            </div>
+          </li>
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">הגשת דוחות שנתיים</strong>
+              <span class="sds-item-desc">הכנה והגשה מלאה של הדוחות השנתיים לרשויות המס, כולל תיאום מס, ניכויים וזיכויים.</span>
+            </div>
+          </li>
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">דוחות כספיים מסודרים</strong>
+              <span class="sds-item-desc">מאזן, דוח רווח והפסד ותזרים מזומנים — פורמט ברור שמאפשר לכם לקבל החלטות עסקיות מושכלות.</span>
+            </div>
+          </li>
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">ניהול שכר ותשלומי מעסיק</strong>
+              <span class="sds-item-desc">חישוב שכר עובדים, ניכויים ותשלומים לביטוח לאומי ולמס הכנסה בהתאם לחוק.</span>
+            </div>
+          </li>
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">ראיית חשבון לעסקים קטנים ובינוניים</strong>
+              <span class="sds-item-desc">שירות הנהלת חשבונות לעסקים קטנים ובינוניים המותאם לסדר הגודל, לתחום הפעילות ולמחזור העסקי שלכם.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Vertical separator -->
+      <div class="sds-vert-divider" aria-hidden="true"></div>
+
+      <!-- Column 2: Mortgage Consulting -->
+      <div class="sds-column">
+        <div class="sds-column-header">
+          <span class="sds-col-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+              <path d="M3 11L11 3l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M6 8.5V18a1 1 0 001 1h3v-4h2v4h3a1 1 0 001-1V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <h3 class="sds-col-title">ייעוץ משכנתאות</h3>
+        </div>
+        <div class="sds-col-divider" aria-hidden="true"></div>
+
+        <ul class="sds-checklist">
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">ניתוח תרחישי משכנתא</strong>
+              <span class="sds-item-desc">בחינת מסלולי ריבית שונים — קבועה, משתנה ופריים — ובניית מסגרת מימון שמתאימה ליכולת ההחזר שלכם.</span>
+            </div>
+          </li>
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">ליווי משכנתא חדשה</strong>
+              <span class="sds-item-desc">מהגשת הבקשה לבנק, דרך משא ומתן על התנאים, ועד לחתימה הסופית — נלווה אתכם בכל שלב.</span>
+            </div>
+          </li>
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">מחזור משכנתא קיימת</strong>
+              <span class="sds-item-desc">בדיקת כדאיות מחזור המשכנתא, חישוב עלויות פירעון מוקדם, ומציאת מסלול חדש שיחסוך לכם כסף.</span>
+            </div>
+          </li>
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">השוואת הצעות בנקים</strong>
+              <span class="sds-item-desc">קבלת הצעות ממספר בנקים, ניתוח השוואתי מקצועי ובחירת ההצעה האופטימלית עבורכם.</span>
+            </div>
+          </li>
+          <li class="sds-item">
+            <span class="sds-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg">
+                <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="sds-item-content">
+              <strong class="sds-item-title">ייעוץ שוטף ומענה מקצועי</strong>
+              <span class="sds-item-desc">זמינות לשאלות לאורך כל התהליך — כי החלטות פיננסיות גדולות מחייבות ליווי מקצועי אמיתי.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <!-- End columns -->
+
+    <!-- Summary annotation bar -->
+    <div class="sds-annotation-bar">
+      <div class="sds-annotation-item">
+        <span class="sds-annotation-num">2</span>
+        <span class="sds-annotation-label">תחומי מומחיות</span>
+      </div>
+      <div class="sds-annotation-sep" aria-hidden="true"></div>
+      <div class="sds-annotation-item">
+        <span class="sds-annotation-num">10+</span>
+        <span class="sds-annotation-label">שירותים כלולים</span>
+      </div>
+      <div class="sds-annotation-sep" aria-hidden="true"></div>
+      <div class="sds-annotation-item">
+        <span class="sds-annotation-num">100%</span>
+        <span class="sds-annotation-label">ליווי מקצועי מלא</span>
+      </div>
+      <div class="sds-annotation-sep" aria-hidden="true"></div>
+      <div class="sds-annotation-item">
+        <span class="sds-annotation-num">א–ת</span>
+        <span class="sds-annotation-label">משיחה ראשונה עד סגירה</span>
+      </div>
+    </div>
+
+  </div>
+  <!-- End container -->
+
+  <!-- Amber measurement-rule band bottom divider -->
+  <div class="sds-divider-wrapper" aria-hidden="true">
+    <div class="sds-amber-rule"></div>
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,64 L0,28 Q80,18 160,26 T320,22 Q400,28 480,20 T640,24 Q720,20 800,26 T960,20 Q1040,26 1120,20 T1200,24 L1200,64 Z" fill="#152033"></path>
+    </svg>
+  </div>
+
+</section>
+
+<section class="services-benefits-section" data-layout-spec="שירותים-benefits" dir="rtl">
+  <!-- Blueprint background SVG overlay -->
+  <div class="services-benefits-section__bg-overlay" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" class="services-benefits-section__blueprint-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="bp-grid" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M80 0L0 0 0 80" fill="none" stroke="rgba(0,191,166,0.07)" stroke-width="1"></path>
+          <path d="M0 40H80M40 0V80" fill="none" stroke="rgba(0,191,166,0.04)" stroke-width="0.5"></path>
+        </pattern>
+        <linearGradient id="teal-glow-h" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(15,118,110,0)"></stop>
+          <stop offset="40%" stop-color="rgba(15,118,110,0.18)"></stop>
+          <stop offset="60%" stop-color="rgba(15,118,110,0.22)"></stop>
+          <stop offset="100%" stop-color="rgba(15,118,110,0)"></stop>
+        </linearGradient>
+        <linearGradient id="teal-glow-v" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="rgba(46,91,255,0)"></stop>
+          <stop offset="50%" stop-color="rgba(46,91,255,0.12)"></stop>
+          <stop offset="100%" stop-color="rgba(46,91,255,0)"></stop>
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bp-grid)"></rect>
+      <!-- Horizontal pathway lines -->
+      <line x1="0" y1="30%" x2="100%" y2="30%" stroke="url(#teal-glow-h)" stroke-width="1.5"></line>
+      <line x1="0" y1="70%" x2="100%" y2="70%" stroke="url(#teal-glow-h)" stroke-width="1.5"></line>
+      <!-- Vertical pathway lines -->
+      <line x1="33%" y1="0" x2="33%" y2="100%" stroke="url(#teal-glow-v)" stroke-width="1"></line>
+      <line x1="66%" y1="0" x2="66%" y2="100%" stroke="url(#teal-glow-v)" stroke-width="1"></line>
+      <!-- Intersection nodes -->
+      <circle cx="33%" cy="30%" r="4" fill="none" stroke="rgba(15,118,110,0.35)" stroke-width="1.5"></circle>
+      <circle cx="66%" cy="30%" r="4" fill="none" stroke="rgba(15,118,110,0.35)" stroke-width="1.5"></circle>
+      <circle cx="33%" cy="70%" r="4" fill="none" stroke="rgba(46,91,255,0.3)" stroke-width="1.5"></circle>
+      <circle cx="66%" cy="70%" r="4" fill="none" stroke="rgba(46,91,255,0.3)" stroke-width="1.5"></circle>
+      <!-- Diagonal financial pathway -->
+      <path d="M0,100% Q25%,70% 50%,50% T100%,0" fill="none" stroke="rgba(245,158,11,0.08)" stroke-width="2" stroke-dasharray="8 6"></path>
+      <path d="M100%,100% Q75%,70% 50%,50% T0,0" fill="none" stroke="rgba(15,118,110,0.06)" stroke-width="2" stroke-dasharray="8 6"></path>
+    </svg>
+  </div>
+
+  <div class="services-benefits-section__container">
+    <!-- Section header -->
+    <header class="services-benefits-section__header">
+      <div class="services-benefits-section__label-row">
+        <span class="services-benefits-section__eyebrow">למה לבחור בנו</span>
+      </div>
+      <h2 class="services-benefits-section__heading">הפרטנר הפיננסי שמבין את התמונה המלאה</h2>
+      <p class="services-benefits-section__subheading">הנהלת חשבונות לעסקים ויעוץ משכנתאות תחת קורת גג אחת — שקיפות, מקצועיות, ותוצאות שמדברות בעד עצמן.</p>
+      <div class="services-benefits-section__divider" aria-hidden="true"></div>
+    </header>
+
+    <!-- Three benefit columns -->
+    <div class="services-benefits-section__grid">
+
+      <!-- Benefit 1: Reliability -->
+      <article class="services-benefits-section__card">
+        <div class="services-benefits-section__card-icon-wrap" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" class="services-benefits-section__card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width="48" height="48">
+            <rect x="6" y="8" width="36" height="32" rx="2" stroke="currentColor" stroke-width="2"></rect>
+            <path d="M14 16h20M14 22h20M14 28h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <circle cx="36" cy="34" r="6" fill="rgba(15,118,110,0.2)" stroke="currentColor" stroke-width="1.5"></circle>
+            <path d="M33 34l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="services-benefits-section__card-content">
+          <div class="services-benefits-section__card-accent-line" aria-hidden="true"></div>
+          <h3 class="services-benefits-section__card-title">אמינות שאפשר לסמוך עליה</h3>
+          <p class="services-benefits-section__card-text">אנו מחויבים לדיוק ולעמידה בכל מועד — הגשת דוחות שנתיים, ניהול ספרים שוטף, ועמידה בדרישות רגולטוריות ללא פשרות. כל לקוח מקבל ליווי אישי ומסודר לאורך כל השנה, לא רק בעת הגשת הדוחות.</p>
+          <div class="services-benefits-section__card-footer">
+            <span class="services-benefits-section__card-stat">+15</span>
+            <span class="services-benefits-section__card-stat-label">שנות ניסיון מקצועי</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Benefit 2: Clear explanation -->
+      <article class="services-benefits-section__card services-benefits-section__card--featured">
+        <div class="services-benefits-section__card-icon-wrap" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" class="services-benefits-section__card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width="48" height="48">
+            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M24 16v8l6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M12 8l4 4M36 8l-4 4M12 40l4-4M36 40l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.5"></path>
+            <circle cx="24" cy="24" r="3" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <div class="services-benefits-section__card-content">
+          <div class="services-benefits-section__card-accent-line services-benefits-section__card-accent-line--amber" aria-hidden="true"></div>
+          <h3 class="services-benefits-section__card-title">בהירות בכל החלטה פיננסית</h3>
+          <p class="services-benefits-section__card-text">מחזור משכנתא, בחירת מסלול מימון, או הבנת מאזן עסקי — אנו מתרגמים מורכבות פיננסית לשפה ברורה ומובנת. כל החלטה מוסברת לעומק, עם יתרונות וחסרונות, כדי שתוכלו לבחור בביטחון מלא.</p>
+          <div class="services-benefits-section__card-footer">
+            <span class="services-benefits-section__card-stat">100%</span>
+            <span class="services-benefits-section__card-stat-label">שקיפות בכל שלב</span>
+          </div>
+        </div>
+        <div class="services-benefits-section__card-featured-glow" aria-hidden="true"></div>
+      </article>
+
+      <!-- Benefit 3: One trusted source -->
+      <article class="services-benefits-section__card">
+        <div class="services-benefits-section__card-icon-wrap" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" class="services-benefits-section__card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width="48" height="48">
+            <path d="M24 6L8 14v10c0 10 7 19 16 22 9-3 16-12 16-22V14L24 6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="24" cy="24" r="3" fill="rgba(245,158,11,0.25)" stroke="none"></circle>
+          </svg>
+        </div>
+        <div class="services-benefits-section__card-content">
+          <div class="services-benefits-section__card-accent-line" aria-hidden="true"></div>
+          <h3 class="services-benefits-section__card-title">כתובת אחת לשני עולמות פיננסיים</h3>
+          <p class="services-benefits-section__card-text">הנהלת חשבונות לעסקים קטנים ובינוניים לצד ייעוץ משכנתאות מקצועי — אצלנו לא צריך לחפש שני ספקים. הסינרגיה בין שני התחומים מאפשרת ראייה פיננסית כוללת ומדויקת יותר עבור כל לקוח.</p>
+          <div class="services-benefits-section__card-footer">
+            <span class="services-benefits-section__card-stat">2-ב-1</span>
+            <span class="services-benefits-section__card-stat-label">שירותים תחת קורת גג אחת</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bottom CTA strip -->
+    <div class="services-benefits-section__cta-strip">
+      <p class="services-benefits-section__cta-text">מוכנים להתחיל? צרו קשר עוד היום לייעוץ ראשוני ללא עלות.</p>
+      <a href="/contact" class="services-benefits-section__cta-btn btn-primary">לפגישת ייעוץ חינם</a>
+    </div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer" dir="rtl">
+  <div class="footer-top">
+    <div class="footer-container">
+      <div class="footer-grid">
+
+        <!-- Company Info -->
+        <div class="footer-col footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="/assets/logo.webp" alt="יחזקאל אביחיל שירותי חשבונאות" class="logo">
+          </div>
+          <p class="footer-tagline">שירותי חשבונאות, הנהלת חשבונות ומשכנתאות ברמה הגבוהה ביותר — מקצועיות, אמינות ובהירות אסטרטגית.</p>
+          <div class="footer-social">
+            <a href="[facebook_handle]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="[instagram_handle]" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="[whatsapp_handle]" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h3 class="footer-heading"><span class="heading-accent"></span>ניווט מהיר</h3>
+          <ul class="footer-links">
+            <li><a href="/services">שירותים</a></li>
+            <li><a href="/about">אודות</a></li>
+            <li><a href="/contact">צור קשר</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h3 class="footer-heading"><span class="heading-accent"></span>תחומי עיסוק</h3>
+          <ul class="footer-links">
+            <li><a href="/services">הנהלת חשבונות</a></li>
+            <li><a href="/services">ייעוץ פיננסי</a></li>
+            <li><a href="/services">משכנתאות</a></li>
+            <li><a href="/services">דוחות כספיים</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h3 class="footer-heading"><span class="heading-accent"></span>צור קשר</h3>
+          <ul class="footer-contact">
+            <li>
+              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+              <span class="contact-text"><a href="mailto:[business_email]">[business_email]</a></span>
+            </li>
+            <li>
+              <span class="contact-icon"><i class="fas fa-phone"></i></span>
+              <span class="contact-text"><a href="tel:[business_phone]">[business_phone]</a></span>
+            </li>
+            <li><a href="/"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+              <span class="contact-text">[business_address]</span></a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="footer-divider">
+    <div class="footer-container">
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <div class="footer-bottom-inner">
+        <p class="footer-copyright">© 2026 יחזקאל אביחיל שירותי חשבונאות. כל הזכויות שמורות.</p>
+        <div class="footer-legal">
+          <a href="/privacy">מדיניות פרטיות</a>
+          <span class="legal-sep"></span>
+          <a href="/terms">תנאי שימוש</a>
+          <span class="legal-sep"></span>
+          <a href="/accessibility">נגישות</a>
+          <span class="legal-sep"></span>
+          <a href="https://zappy5.com" target="_blank" class="zappy-attribution">נוצר באמצעות Zappy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <div data-integration="accessibility:toolbar"></div>
+
+    <script src="/script.js"></script>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+
+    <script id="zappy-navbar-scroll-effect">
+    (function(){
+      var nb=document.querySelector('nav.navbar,.navbar:not(.zappy-catalog-menu)');
+      var cm=document.querySelector('.zappy-catalog-menu,#zappy-catalog-menu');
+      if(!nb)return;
+      var fb='rgba(232,238,244,0.85)';
+      var th=60;
+      var rs=getComputedStyle(document.documentElement);
+      var td=rs.getPropertyValue('--text-dark').trim()||'#1a1a1a';
+      var tl=rs.getPropertyValue('--text-light').trim()||'#ffffff';
+      var st=true?td:tl;
+      nb.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease,box-shadow 0.3s ease';
+      if(cm)cm.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease';
+      var neSel='a,.navbar-brand,.navbar-brand a,.dropdown-toggle,.mobile-toggle,.phone-header-btn,.mobile-hamburger-btn,.mobile-close-btn,.mobile-submenu-toggle,.nav-link';
+      var skipCls=['cart-link','login-link','nav-search-toggle','search-toggle'];
+      function sTC(c,clr){var els=c.querySelectorAll(neSel);for(var i=0;i<els.length;i++){var sk=false;if(els[i].closest('.sub-menu')||els[i].closest('.dropdown-menu')){sk=true;}for(var j=0;j<skipCls.length;j++){if(els[i].classList.contains(skipCls[j])){sk=true;break;}}if(!sk)els[i].style.setProperty('color',clr,'important');}}
+      function cTC(c){var els=c.querySelectorAll(neSel);for(var i=0;i<els.length;i++){if(els[i].closest('.sub-menu')||els[i].closest('.dropdown-menu'))continue;els[i].style.removeProperty('color');}}
+      function applyScrolled(){
+        nb.classList.add('scrolled');
+        if(window.innerWidth>768){
+          nb.style.setProperty('--frosted-text',st);
+          nb.style.setProperty('background-image','none','important');
+          nb.style.setProperty('background-color',fb,'important');
+          nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';
+          sTC(nb,st);
+        }
+        if(cm){cm.classList.add('scrolled');if(window.innerWidth>768){cm.style.setProperty('background',fb,'important');cm.style.setProperty('backdrop-filter','blur(12px)','important');cm.style.setProperty('-webkit-backdrop-filter','blur(12px)','important');sTC(cm,st);}}
+      }
+      function onS(){
+        if(window._zappyNavNoDarkHero) return;
+        if(window.innerWidth<=768){nb.classList.remove('scrolled');cTC(nb);if(cm){cm.classList.remove('scrolled');cTC(cm);}return;}
+        var y=window.scrollY||window.pageYOffset;
+        if(y>th){
+          nb.classList.add('scrolled');nb.style.setProperty('background-color',fb,'important');nb.style.setProperty('background-image','none','important');
+          nb.style.setProperty('--frosted-text',st);nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';
+          sTC(nb,st);
+          if(cm){cm.classList.add('scrolled');cm.style.setProperty('background',fb,'important');cm.style.setProperty('backdrop-filter','blur(12px)','important');cm.style.setProperty('-webkit-backdrop-filter','blur(12px)','important');sTC(cm,st);}
+        }else{
+          nb.classList.remove('scrolled');nb.style.setProperty('background-color','transparent','important');nb.style.removeProperty('background-image');
+          nb.style.removeProperty('--frosted-text');nb.style.backdropFilter='none';nb.style.webkitBackdropFilter='none';nb.style.boxShadow='none';
+          cTC(nb);
+          if(cm){cm.classList.remove('scrolled');cm.style.setProperty('background','transparent','important');cm.style.setProperty('backdrop-filter','none','important');cm.style.setProperty('-webkit-backdrop-filter','none','important');cTC(cm);}
+        }
+      }
+      function sLum(rv,gv,bv){rv/=255;gv/=255;bv/=255;rv=rv<=0.03928?rv/12.92:Math.pow((rv+0.055)/1.055,2.4);gv=gv<=0.03928?gv/12.92:Math.pow((gv+0.055)/1.055,2.4);bv=bv<=0.03928?bv/12.92:Math.pow((bv+0.055)/1.055,2.4);return 0.2126*rv+0.7152*gv+0.0722*bv;}
+      window.addEventListener('scroll',onS,{passive:true});
+      window.addEventListener('resize',onS,{passive:true});
+      onS();
+      var heroEl=document.querySelector('section[class*="hero"],[data-hero-type],main>section:first-child');
+      var hasDH=false;
+      if(heroEl){var hCs=getComputedStyle(heroEl);var hBI=hCs.backgroundImage;if(hBI&&hBI!=='none'){if(hBI.indexOf('url(')!==-1){var hM2=hCs.backgroundColor.match(/\d+/g);if(hM2&&hM2.length>=3){hasDH=sLum(parseInt(hM2[0]),parseInt(hM2[1]),parseInt(hM2[2]))<0.4;}else{hasDH=true;}}else if(hBI.indexOf('gradient')!==-1){var cM=hBI.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/g);if(cM&&cM.length>0){var tLm=0;for(var ci=0;ci<cM.length;ci++){var pts=cM[ci].match(/\d+/g);tLm+=sLum(parseInt(pts[0]),parseInt(pts[1]),parseInt(pts[2]));}hasDH=(tLm/cM.length)<0.4;}else{hasDH=true;}}else{hasDH=true;}}else{var hM=hCs.backgroundColor.match(/\d+/g);if(hM&&hM.length>=3){hasDH=sLum(parseInt(hM[0]),parseInt(hM[1]),parseInt(hM[2]))<0.4;}}}
+      if(!hasDH){window.removeEventListener('scroll',onS);window.removeEventListener('resize',onS);applyScrolled();window._zappyNavNoDarkHero=true;}
+    })();
+    </script>
+
+    <script id="zappy-mobile-lang-menu-script">
+    (function() {
+      function initMobileLangMenu() {
+        if (window.innerWidth > 768) {
+          var existingMenu = document.querySelector('.mobile-lang-menu');
+          if (existingMenu) existingMenu.remove();
+          return;
+        }
+        if (document.querySelector('.mobile-lang-menu')) return;
+        var switcher = document.querySelector('.lang-switcher');
+        if (!switcher) return;
+        var dropdown = switcher.querySelector('.lang-switcher-dropdown');
+        if (!dropdown) return;
+        var options = dropdown.querySelectorAll('.lang-option');
+        if (options.length === 0) return;
+        var navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu') || document.querySelector('nav ul');
+        if (!navMenu) return;
+        var currentLang = document.documentElement.lang || 'en';
+        var langConfigs = {
+          he: {name:'עברית',flag:'https://api.iconify.design/circle-flags/il.svg'},
+          en: {name:'English',flag:'https://api.iconify.design/circle-flags/us.svg'},
+          ar: {name:'العربية',flag:'https://api.iconify.design/circle-flags/sa.svg'},
+          fr: {name:'Français',flag:'https://api.iconify.design/circle-flags/fr.svg'},
+          es: {name:'Español',flag:'https://api.iconify.design/circle-flags/es.svg'},
+          de: {name:'Deutsch',flag:'https://api.iconify.design/circle-flags/de.svg'},
+          ru: {name:'Русский',flag:'https://api.iconify.design/circle-flags/ru.svg'},
+          zh: {name:'中文',flag:'https://api.iconify.design/circle-flags/cn.svg'},
+          ja: {name:'日本語',flag:'https://api.iconify.design/circle-flags/jp.svg'},
+          pt: {name:'Português',flag:'https://api.iconify.design/circle-flags/br.svg'},
+          it: {name:'Italiano',flag:'https://api.iconify.design/circle-flags/it.svg'},
+          ko: {name:'한국어',flag:'https://api.iconify.design/circle-flags/kr.svg'}
+        };
+        var container = document.createElement('div');
+        container.className = 'mobile-lang-menu';
+        var currentConfig = langConfigs[currentLang] || {name:currentLang,flag:''};
+        var toggleBtn = document.createElement('button');
+        toggleBtn.className = 'mobile-lang-toggle';
+        toggleBtn.type = 'button';
+        var currentFlagHtml = currentConfig.flag ? '<img src="' + currentConfig.flag + '" width="20" height="20" alt="" style="border-radius:50%;margin-right:8px;margin-left:8px;">' : '';
+        toggleBtn.innerHTML = currentFlagHtml + currentConfig.name;
+        container.appendChild(toggleBtn);
+        var optionsDiv = document.createElement('div');
+        optionsDiv.className = 'mobile-lang-options';
+        var currentLink = document.createElement('a');
+        currentLink.className = 'mobile-lang-option active';
+        currentLink.href = '#';
+        currentLink.innerHTML = currentFlagHtml + currentConfig.name;
+        optionsDiv.appendChild(currentLink);
+        options.forEach(function(opt) {
+          var link = document.createElement('a');
+          link.className = 'mobile-lang-option';
+          link.href = opt.getAttribute('href');
+          link.innerHTML = opt.innerHTML;
+          optionsDiv.appendChild(link);
+        });
+        container.appendChild(optionsDiv);
+        navMenu.appendChild(container);
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleBtn.classList.toggle('expanded');
+          optionsDiv.classList.toggle('expanded');
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileLangMenu); }
+      else { initMobileLangMenu(); }
+      window.addEventListener('resize', function() { clearTimeout(window._mlrt); window._mlrt = setTimeout(initMobileLangMenu, 250); });
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# Business — Generative Engine Optimization Map
+
+---
+
+## Pages
+
+### בית
+https://example.com
+מחפשים הנהלת חשבונות לעסקים או ייעוץ משכנתאות מקצועי? יחזקאל אביחיל מציע פתרון פיננסי מלא לעסקים ולפרטיים. קבלו שירות אמין ומותאם אישית — התחילו עוד היום!
+
+### שירותים
+https://example.com/services
+מהגשת דוחות שנתיים ועד מחזור משכנתא — גלו את מגוון השירותים המקצועיים שלנו לעסקים קטנים ובינוניים ולרוכשי נדל&quot;ן. הפתרון הפיננסי שחיפשתם כבר כאן!
+
+### אודות
+https://example.com/about
+יחזקאל אביחיל הוא שותף פיננסי מהימן לעסקים ולפרטיים כאחד. עם ניסיון עשיר בהנהלת חשבונות לעסקים קטנים ובייעוץ משכנתאות, תקבלו מקצועיות, אמינות ויחס אישי בכל צעד.
+
+### צור קשר
+https://example.com/contact
+רוצים לדעת יותר על הגשת דוחות שנתיים או מחזור משכנתא משתלם? צרו קשר עם יחזקאל אביחיל עוד היום ותקבלו ייעוץ ראשוני מותאם אישית — כי ההחלטה הנכונה מתחילה בשיחה אחת.
+
+## Legal & Policy
+
+### Privacy Policy
+https://example.com/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://example.com/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://example.com/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+# Business Context (for LLM understanding)
+
+## About Business
+---
+
+# Additional Resources
+
+- **Sitemap**: https://example.com/sitemap.xml
+- **Robots.txt**: https://example.com/robots.txt
