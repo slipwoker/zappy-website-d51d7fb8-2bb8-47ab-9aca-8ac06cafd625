@@ -1,6 +1,4 @@
-# יחזקאל אביחיל שירותי חשבונאות — Generative Engine Optimization Map
-
-> A dual-service professional firm offering accounting and bookkeeping services for businesses — including annual report filing — alongside mortgage consulting services covering both new mortgages and mortgage refinancing. The business positions itself as a trusted financial partner for both business owners and individuals navigating real estate financing decisions.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -40,21 +38,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About יחזקאל אביחיל שירותי חשבונאות
-A dual-service professional firm offering accounting and bookkeeping services for businesses — including annual report filing — alongside mortgage consulting services covering both new mortgages and mortgage refinancing. The business positions itself as a trusted financial partner for both business owners and individuals navigating real estate financing decisions.
-
-## Services/Products
-- הנהלת חשבונות לעסקים
-- הגשת דוחות שנתיים
-- יעוץ משכנתא חדשה
-- מחזור משכנתא
-
-## Target Audience
-עסקים קטנים ובינוניים, בעלי בתים ורוכשי נדל"ן
-
-## Industry
-פיננסים, הנהלת חשבונות, משכנתאות
-
+## About Business
 ---
 
 # Additional Resources
