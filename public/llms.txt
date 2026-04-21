@@ -1,47 +1,63 @@
-# Business — Generative Engine Optimization Map
+# יחזקאל אביחיל שירותי חשבונאות — Generative Engine Optimization Map
+
+> A dual-service professional firm offering accounting and bookkeeping services for businesses — including annual report filing — alongside mortgage consulting services covering both new mortgages and mortgage refinancing. The business positions itself as a trusted financial partner for both business owners and individuals navigating real estate financing decisions.
 
 ---
 
 ## Pages
 
 ### בית
-https://example.com
+https://yechezkelavichailaccountingser.zappy5.app
 מחפשים הנהלת חשבונות לעסקים או ייעוץ משכנתאות מקצועי? יחזקאל אביחיל מציע פתרון פיננסי מלא לעסקים ולפרטיים. קבלו שירות אמין ומותאם אישית — התחילו עוד היום!
 
 ### שירותים
-https://example.com/services
+https://yechezkelavichailaccountingser.zappy5.app/services
 מהגשת דוחות שנתיים ועד מחזור משכנתא — גלו את מגוון השירותים המקצועיים שלנו לעסקים קטנים ובינוניים ולרוכשי נדל&quot;ן. הפתרון הפיננסי שחיפשתם כבר כאן!
 
 ### אודות
-https://example.com/about
+https://yechezkelavichailaccountingser.zappy5.app/about
 יחזקאל אביחיל הוא שותף פיננסי מהימן לעסקים ולפרטיים כאחד. עם ניסיון עשיר בהנהלת חשבונות לעסקים קטנים ובייעוץ משכנתאות, תקבלו מקצועיות, אמינות ויחס אישי בכל צעד.
 
 ### צור קשר
-https://example.com/contact
+https://yechezkelavichailaccountingser.zappy5.app/contact
 רוצים ייעוץ בהגשת דוחות שנתיים או מחזור משכנתא? צרו קשר עם יחזקאל אביחיל ותקבלו ייעוץ ראשוני מותאם אישית — ההחלטה הנכונה מתחילה בשיחה אחת.
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://yechezkelavichailaccountingser.zappy5.app/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://yechezkelavichailaccountingser.zappy5.app/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://yechezkelavichailaccountingser.zappy5.app/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About יחזקאל אביחיל שירותי חשבונאות
+A dual-service professional firm offering accounting and bookkeeping services for businesses — including annual report filing — alongside mortgage consulting services covering both new mortgages and mortgage refinancing. The business positions itself as a trusted financial partner for both business owners and individuals navigating real estate financing decisions.
+
+## Services/Products
+- הנהלת חשבונות לעסקים
+- הגשת דוחות שנתיים
+- יעוץ משכנתא חדשה
+- מחזור משכנתא
+
+## Target Audience
+עסקים קטנים ובינוניים, בעלי בתים ורוכשי נדל"ן
+
+## Industry
+פיננסים, הנהלת חשבונות, משכנתאות
+
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://example.com/sitemap.xml
-- **Robots.txt**: https://example.com/robots.txt
+- **Sitemap**: https://yechezkelavichailaccountingser.zappy5.app/sitemap.xml
+- **Robots.txt**: https://yechezkelavichailaccountingser.zappy5.app/robots.txt
