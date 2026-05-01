@@ -137,7 +137,7 @@
   src: url('assets/fonts/Rubik-Bold.woff2') format('woff2');
 }
 :root {
-  --primary: #2E5BFF;
+--primary: #2E5BFF;
   --secondary: #0F766E;
   --accent: #F59E0B;
   --bg-light: #E8EEF4;
@@ -177,6 +177,7 @@
   --gradient-overlay-dark: linear-gradient(180deg, rgba(28,63,133,0.08) 0%, rgba(28,63,133,0.42) 100%);
   --gradient-light-section: linear-gradient(180deg, #F6F9FC 0%, #E8EFF7 100%);
   --gradient-overlay-light: linear-gradient(180deg, rgba(255,255,255,0.84) 0%, rgba(238,243,248,0.46) 100%);
+  --nav-overlay-opacity: 0.32;
 }
 
 *,
@@ -9049,8 +9050,8 @@ html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
 /* END MOBILE RESPONSIVE FIXES */
 
 /* === NAVBAR STYLE OVERRIDES START === */
-.navbar { background-color: transparent !important; background-image: linear-gradient(to bottom, rgba(0,0,0,var(--nav-overlay-opacity,0.35)), transparent) !important; transition: background-color 0.3s ease, background-image 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, box-shadow 0.3s ease !important; }
-.zappy-catalog-menu, #zappy-catalog-menu { background-image: linear-gradient(to bottom, rgba(0,0,0,var(--nav-overlay-opacity,0.35)), transparent) !important; transition: background 0.3s ease, background-image 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease !important;}
+.navbar { background-color: transparent !important; background-image: linear-gradient(to bottom, rgba(0,0,0,var(--nav-overlay-opacity, 0.32)), transparent) !important; transition: background-color 0.3s ease, background-image 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, box-shadow 0.3s ease !important; }
+.zappy-catalog-menu, #zappy-catalog-menu { background-image: linear-gradient(to bottom, rgba(0,0,0,var(--nav-overlay-opacity, 0.32)), transparent) !important; transition: background 0.3s ease, background-image 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease !important;}
 .navbar .nav-menu > li > a,
 .navbar .nav-menu > .nav-item > a,
 .navbar .nav-link,
@@ -9126,9 +9127,9 @@ nav.navbar .sub-menu li a:hover { color: #F59E0B !important; background-color: r
   .navbar:not(.scrolled) .sub-menu a:hover,
   .navbar:not(.scrolled) .sub-menu li a:hover { color: var(--nav-text-hover, var(--accent)) !important; }
 }
-.navbar.scrolled { background-color: rgba(21,32,51,0.85) !important; background-image: none !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; box-shadow: 0 2px 16px rgba(0,0,0,0.12) !important; }
+.navbar.scrolled { background-color: rgba(232,238,244,0.85) !important; background-image: none !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; box-shadow: 0 2px 16px rgba(0,0,0,0.12) !important; }
 .navbar.scrolled::before, .navbar.scrolled::after { background: transparent !important; opacity: 0 !important; }
-.navbar.scrolled ~ .zappy-catalog-menu, .navbar.scrolled ~ #zappy-catalog-menu, .zappy-catalog-menu.scrolled, #zappy-catalog-menu.scrolled { background: rgba(21,32,51,0.85) !important; background-image: none !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
+.navbar.scrolled ~ .zappy-catalog-menu, .navbar.scrolled ~ #zappy-catalog-menu, .zappy-catalog-menu.scrolled, #zappy-catalog-menu.scrolled { background: rgba(232,238,244,0.85) !important; background-image: none !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
 .zappy-catalog-menu.scrolled .catalog-menu-item,
 .zappy-catalog-menu.scrolled .catalog-menu-all,
 #zappy-catalog-menu.scrolled .catalog-menu-item,
@@ -9136,7 +9137,7 @@ nav.navbar .sub-menu li a:hover { color: #F59E0B !important; background-color: r
 .navbar.scrolled ~ .zappy-catalog-menu .catalog-menu-item,
 .navbar.scrolled ~ .zappy-catalog-menu .catalog-menu-all,
 .navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-item,
-.navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-all { color: var(--frosted-text, #F8FBFF) !important; }
+.navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-all { color: var(--frosted-text, #152033) !important; }
 .zappy-catalog-menu.scrolled .catalog-menu-item:hover,
 .zappy-catalog-menu.scrolled .catalog-menu-all:hover,
 #zappy-catalog-menu.scrolled .catalog-menu-item:hover,
@@ -9148,24 +9149,34 @@ nav.navbar .sub-menu li a:hover { color: #F59E0B !important; background-color: r
 .navbar.scrolled .nav-menu > li > a,
 .navbar.scrolled .nav-menu > .nav-item > a,
 .navbar.scrolled .nav-link,
-.navbar.scrolled a:not(.nav-cta-btn) { color: var(--frosted-text, #F8FBFF) !important; }
+.navbar.scrolled a:not(.nav-cta-btn) { color: var(--frosted-text, #152033) !important; }
 .navbar.scrolled .nav-menu > li > a:hover,
 .navbar.scrolled .nav-menu > .nav-item > a:hover,
 .navbar.scrolled .nav-link:hover,
 .navbar.scrolled a:not(.nav-cta-btn):hover { color: var(--nav-text-hover, var(--accent)) !important; }
-.navbar.scrolled .navbar-brand, .navbar.scrolled .navbar-brand a { color: var(--frosted-text, #F8FBFF) !important; }
-.navbar.scrolled .dropdown-toggle { color: var(--frosted-text, #F8FBFF) !important; }
-.navbar.scrolled .mobile-hamburger-btn, .navbar.scrolled .mobile-close-btn { color: var(--frosted-text, #F8FBFF) !important; }
-.navbar.scrolled .phone-header-btn { color: var(--frosted-text, #F8FBFF) !important; }
-.navbar.scrolled .mobile-toggle { color: var(--frosted-text, #F8FBFF) !important; }
+.navbar.scrolled .navbar-brand, .navbar.scrolled .navbar-brand a { color: var(--frosted-text, #152033) !important; }
+.navbar.scrolled .dropdown-toggle { color: var(--frosted-text, #152033) !important; }
+.navbar.scrolled .mobile-hamburger-btn, .navbar.scrolled .mobile-close-btn { color: var(--frosted-text, #152033) !important; }
+.navbar.scrolled .phone-header-btn { color: var(--frosted-text, #152033) !important; }
+.navbar.scrolled .mobile-toggle { color: var(--frosted-text, #152033) !important; }
 .navbar.scrolled .mobile-toggle svg { color: inherit !important; }
 .navbar.scrolled .mobile-toggle svg path { stroke: currentColor !important; }
-.navbar.scrolled .nav-search-btn { color: var(--frosted-text, #F8FBFF) !important; }
-.navbar.scrolled .nav-search-btn svg { stroke: var(--frosted-text, #F8FBFF) !important; fill: none !important; }
+.navbar.scrolled .mobile-hamburger-btn svg,
+.navbar.scrolled .mobile-close-btn svg,
+.navbar.scrolled .phone-header-btn svg,
+.navbar.scrolled .navbar-brand svg,
+.navbar.scrolled .logo-link svg { color: inherit !important; stroke: currentColor !important; }
+.navbar.scrolled .mobile-hamburger-btn svg path,
+.navbar.scrolled .mobile-close-btn svg path,
+.navbar.scrolled .phone-header-btn svg path,
+.navbar.scrolled .navbar-brand svg path,
+.navbar.scrolled .logo-link svg path { stroke: currentColor !important; }
+.navbar.scrolled .nav-search-btn { color: var(--frosted-text, #152033) !important; }
+.navbar.scrolled .nav-search-btn svg { stroke: var(--frosted-text, #152033) !important; fill: none !important; }
 @media (min-width: 769px) {
   .navbar.scrolled .sub-menu,
   .navbar.scrolled ul.sub-menu,
-  nav.navbar.scrolled .sub-menu { background-color: #E8EEF4 !important; border-radius: 8px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important; }
+  nav.navbar.scrolled .sub-menu { background-color: var(--bg-light, #ffffff) !important; border-radius: 8px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important; }
   .navbar.scrolled .sub-menu a,
   .navbar.scrolled .sub-menu li a,
   .navbar.scrolled .nav-menu .sub-menu a,
@@ -9176,7 +9187,7 @@ nav.navbar .sub-menu li a:hover { color: #F59E0B !important; background-color: r
   .navbar.scrolled .sub-menu li a:hover,
   .navbar.scrolled .nav-menu .sub-menu a:hover,
   nav.navbar.scrolled .sub-menu li a:hover { color: #F59E0B !important; background-color: rgba(128,128,128,0.1) !important; }
-  .navbar.scrolled .dropdown-menu { background-color: #E8EEF4 !important; }
+  .navbar.scrolled .dropdown-menu { background-color: var(--bg-light, #ffffff) !important; }
   .navbar.scrolled .dropdown-menu li a,
   .navbar.scrolled .dropdown-menu .dropdown-item { color: #152033 !important; }
   .navbar.scrolled .dropdown-menu li a:hover,
@@ -9221,6 +9232,33 @@ nav.navbar .sub-menu li a:hover { color: #F59E0B !important; background-color: r
   .navbar.active .phone-header-btn, .navbar.open .phone-header-btn, .navbar.show .phone-header-btn, .navbar.menu-open .phone-header-btn,
   .navbar:has(.nav-menu.active) .phone-header-btn, .navbar:has(#navMenu.active) .phone-header-btn, .navbar:has(.mobile-menu.active) .phone-header-btn, .navbar:has(.mobile-toggle.active) .phone-header-btn {
     color: #F8FBFF !important;
+  }
+  .navbar.scrolled .mobile-toggle svg, .navbar.scrolled .mobile-hamburger-btn svg, .navbar.scrolled .mobile-close-btn svg,
+  .navbar.scrolled .navbar-brand svg, .navbar.scrolled .dropdown-toggle svg, .navbar.scrolled .phone-header-btn svg,
+  body.menu-open .navbar .mobile-toggle svg, body.nav-open .navbar .mobile-toggle svg, body.mobile-menu-open .navbar .mobile-toggle svg,
+  .navbar.active .mobile-toggle svg, .navbar.open .mobile-toggle svg, .navbar.show .mobile-toggle svg, .navbar.menu-open .mobile-toggle svg,
+  .navbar:has(.nav-menu.active) .mobile-toggle svg, .navbar:has(#navMenu.active) .mobile-toggle svg, .navbar:has(.mobile-menu.active) .mobile-toggle svg, .navbar:has(.mobile-toggle.active) .mobile-toggle svg,
+  body.menu-open .navbar .phone-header-btn svg, body.nav-open .navbar .phone-header-btn svg, body.mobile-menu-open .navbar .phone-header-btn svg,
+  .navbar.active .phone-header-btn svg, .navbar.open .phone-header-btn svg, .navbar.show .phone-header-btn svg, .navbar.menu-open .phone-header-btn svg,
+  .navbar:has(.nav-menu.active) .phone-header-btn svg, .navbar:has(#navMenu.active) .phone-header-btn svg, .navbar:has(.mobile-menu.active) .phone-header-btn svg, .navbar:has(.mobile-toggle.active) .phone-header-btn svg,
+  body.menu-open .navbar .navbar-brand svg, body.nav-open .navbar .navbar-brand svg, body.mobile-menu-open .navbar .navbar-brand svg,
+  .navbar.active .navbar-brand svg, .navbar.open .navbar-brand svg, .navbar.show .navbar-brand svg, .navbar.menu-open .navbar-brand svg,
+  .navbar:has(.nav-menu.active) .navbar-brand svg, .navbar:has(#navMenu.active) .navbar-brand svg, .navbar:has(.mobile-menu.active) .navbar-brand svg, .navbar:has(.mobile-toggle.active) .navbar-brand svg {
+    color: #F8FBFF !important;
+    stroke: currentColor !important;
+  }
+  .navbar.scrolled .mobile-toggle svg path, .navbar.scrolled .mobile-hamburger-btn svg path, .navbar.scrolled .mobile-close-btn svg path,
+  .navbar.scrolled .navbar-brand svg path, .navbar.scrolled .dropdown-toggle svg path, .navbar.scrolled .phone-header-btn svg path,
+  body.menu-open .navbar .mobile-toggle svg path, body.nav-open .navbar .mobile-toggle svg path, body.mobile-menu-open .navbar .mobile-toggle svg path,
+  .navbar.active .mobile-toggle svg path, .navbar.open .mobile-toggle svg path, .navbar.show .mobile-toggle svg path, .navbar.menu-open .mobile-toggle svg path,
+  .navbar:has(.nav-menu.active) .mobile-toggle svg path, .navbar:has(#navMenu.active) .mobile-toggle svg path, .navbar:has(.mobile-menu.active) .mobile-toggle svg path, .navbar:has(.mobile-toggle.active) .mobile-toggle svg path,
+  body.menu-open .navbar .phone-header-btn svg path, body.nav-open .navbar .phone-header-btn svg path, body.mobile-menu-open .navbar .phone-header-btn svg path,
+  .navbar.active .phone-header-btn svg path, .navbar.open .phone-header-btn svg path, .navbar.show .phone-header-btn svg path, .navbar.menu-open .phone-header-btn svg path,
+  .navbar:has(.nav-menu.active) .phone-header-btn svg path, .navbar:has(#navMenu.active) .phone-header-btn svg path, .navbar:has(.mobile-menu.active) .phone-header-btn svg path, .navbar:has(.mobile-toggle.active) .phone-header-btn svg path,
+  body.menu-open .navbar .navbar-brand svg path, body.nav-open .navbar .navbar-brand svg path, body.mobile-menu-open .navbar .navbar-brand svg path,
+  .navbar.active .navbar-brand svg path, .navbar.open .navbar-brand svg path, .navbar.show .navbar-brand svg path, .navbar.menu-open .navbar-brand svg path,
+  .navbar:has(.nav-menu.active) .navbar-brand svg path, .navbar:has(#navMenu.active) .navbar-brand svg path, .navbar:has(.mobile-menu.active) .navbar-brand svg path, .navbar:has(.mobile-toggle.active) .navbar-brand svg path {
+    stroke: currentColor !important;
   }
   
   .navbar.scrolled .mobile-toggle svg { color: inherit !important; }
@@ -9680,45 +9718,6 @@ body.accessibility-widget-visible ._access-menu {
     display: none !important;
   }
 }
-
-/* AI-generated section */
-.art-article-section { padding: 80px 20px; background: var(--bg-color, #f8f9fa); color: var(--text-color, #1a1a2e); }
-.art-container { max-width: 800px; margin: 0 auto; }
-.art-header { text-align: center; margin-bottom: 3rem; }
-.art-main-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-subtitle { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-section-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-section-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-section-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-pros-card-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-pros-subtitle { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-pros-subtitle { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-pros-card-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-pros-subtitle { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-pros-subtitle { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-section-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-rec-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-rec-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-cta-title { font-size: 2rem; font-weight: 700; color: var(--text-color, #1a1a2e); margin-bottom: 1rem; }
-.art-badge { display: inline-block; padding: 6px 16px; background: var(--primary-color); color: #fff; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
-.art-subtitle { font-size: 1.1rem; color: #666; margin-bottom: 2rem; }
-.art-pros-subtitle { font-size: 1.1rem; color: #666; margin-bottom: 2rem; }
-.art-pros-subtitle { font-size: 1.1rem; color: #666; margin-bottom: 2rem; }
-.art-pros-subtitle { font-size: 1.1rem; color: #666; margin-bottom: 2rem; }
-.art-pros-subtitle { font-size: 1.1rem; color: #666; margin-bottom: 2rem; }
-.art-cta-badge { display: inline-block; padding: 6px 16px; background: var(--primary-color); color: #fff; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
-.art-meta-divider { width: 60px; height: 3px; background: var(--primary-color); margin: 0 auto 2rem; border: none; border-radius: 2px; }
-.art-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
-.art-meta-item { background: #ffffff; border: 1px solid var(--primary-color)30; border-radius: 12px; overflow: hidden; transition: all 0.25s ease; }
-.art-meta-item:hover { background: rgba(0,0,0,0.02); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
-.art-intro-icon { font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; color: var(--primary-color); }
-.art-meta-item.active .art-intro-icon { transform: rotate(180deg); }
-.art-cta-btn { display: inline-block; padding: 14px 32px; background: var(--primary-color); color: #fff; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
-.art-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-.art-cta-btn { display: inline-block; padding: 14px 32px; background: var(--primary-color); color: #fff; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
-.art-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-.art-cta-text { margin-bottom: 1rem; color: #666; }
-@media (max-width: 768px) { .art-article-section { padding: 48px 16px; } }
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
